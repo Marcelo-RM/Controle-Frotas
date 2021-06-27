@@ -1,0 +1,172 @@
+{
+	"_version": "1.21.0",
+	"sap.app": {
+		"id": "project.frotasapp",
+		"type": "application",
+		"i18n": {
+			"bundleUrl": "i18n/i18n.properties",
+			"fallbackLocale": "en",
+			"supportedLocales": [
+				"pt",
+				"en"
+			]
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"applicationVersion": {
+			"version": "1.0.0"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": [
+			"sap_hcb",
+			"sap_bluecrystal",
+			"sap_fiori_3"
+		]
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "project.frotasapp.view.App",
+			"type": "XML",
+			"async": true,
+			"id": "app"
+		},
+		"dependencies": {
+			"minUI5Version": "1.30",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.tnt": {},
+				"sap.ui.layout": {},
+				"sap.uxap": {},
+				"sap.suite.ui.microchart": {
+					"lazy": true
+				}
+			}
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleUrl": "i18n/i18n.properties",
+					"async": true,
+					"fallbackLocale": "pt",
+					"supportedLocales": [
+						"en",
+						"pt"
+					]
+				}
+			},
+			"side": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/sideContent.json"
+			}
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"controlId": "mainContents",
+				"viewType": "XML",
+				"controlAggregation": "pages",
+				"viewPath": "project.frotasapp.view",
+				"async": true
+			},
+			"routes": [
+				{
+					"pattern": "",
+					"name": "home",
+					"target": "home"
+				},
+				{
+					"pattern": "carros",
+					"name": "carros",
+					"target": "carros"
+				},
+				{
+					"pattern": "cargos",
+					"name": "cargos",
+					"target": "cargos"
+				},
+				{
+					"pattern": "condutores",
+					"name": "condutores",
+					"target": "condutores"
+				},
+				{
+					"pattern": "condutores",
+					"name": "condutores",
+					"target": "condutores"
+				},
+				{
+					"pattern": "divisoes",
+					"name": "divisoes",
+					"target": "divisoes"
+				},
+				{
+					"pattern": "locadoras",
+					"name": "locadoras",
+					"target": "locadoras"
+				},
+				{
+					"pattern": "tipos",
+					"name": "tipos",
+					"target": "tipos"
+				},
+				{
+					"pattern": "ImportantLinks",
+					"name": "importantLinks",
+					"target": "importantLinks"
+				},
+				{
+					"pattern": "Legal",
+					"name": "legal",
+					"target": "legal"
+				}
+			],
+			"targets": {
+				"home": {
+					"viewId": "home",
+					"viewName": "Home"
+				},
+				"carros": {
+					"viewId": "carros",
+					"viewName": "Carros"
+				},
+				"cargos": {
+					"viewId": "cargos",
+					"viewName": "Cargos"
+				},
+				"condutores": {
+					"viewId": "condutores",
+					"viewName": "Condutores"
+				},
+				"divisoes": {
+					"viewId": "divisoes",
+					"viewName": "Divisoes"
+				},
+				"locadoras": {
+					"viewId": "locadoras",
+					"viewName": "Locadoras"
+				},
+				"tipos": {
+					"viewId": "tipos",
+					"viewName": "Tipos"
+				},
+				"importantLinks": {
+					"viewId": "importantLinks",
+					"viewName": "ImportantLinks"
+				},
+				"legal": {
+					"viewId": "legal",
+					"viewName": "Legal"
+				}
+			}
+		}
+	}
+}

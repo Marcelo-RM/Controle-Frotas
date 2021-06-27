@@ -1,0 +1,64 @@
+<mvc:View controllerName="project.frotasapp.controller.Carros"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc">
+    <Page showHeader="false" showFooter="true">
+        <VBox class="sapUiSmallMargin">
+            <Title text="{i18n>titleCarros}" level="H3"/>
+            <Table id="carroTable" items="{path:'carros>/', templateShareable: false}" fixedLayout="false" growing="true">
+                <headerToolbar>
+                    <Toolbar design="Transparent">
+                        <SearchField search="onCarsFilter" width="{= ${device>/system/phone} ? '80%' : '30%' }" />
+                        <ToolbarSpacer></ToolbarSpacer>
+                        <Button icon="sap-icon://download" press="onDataExport" />
+                    </Toolbar>
+                </headerToolbar>
+                <columns>
+                    <Column>
+                        <Text text="{i18n>columnMarca}"/>
+                    </Column>
+                    <Column minScreenWidth="Tablet">
+                        <Text text="{i18n>columnModelo}"/>
+                    </Column>
+                    <Column minScreenWidth="Desktop" hAlign="Center">
+                        <Text text="{i18n>columnPlaca}"/>
+                    </Column>
+                    <Column hAlign="Center">
+                        <Text text="{i18n>columnChassi}"/>
+                    </Column>
+                    <Column hAlign="Center">
+                        <Text text="{i18n>columnRenavam}"/>
+                    </Column>
+                    <Column width="1rem">
+                        <Text text=""/>
+                    </Column>
+                    <Column width="1rem">
+                        <Text text=""/>
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{carros>Marca}"/>
+                            <Text text="{carros>Modelo}"/>
+                            <Text text="{carros>Placa}"/>
+                            <Text text="{carros>Chassi}"/>
+                            <Text text="{carros>Renavam}"/>
+
+                            <Button type="Ghost" icon="sap-icon://edit" onPress="" />
+                            <Button type="Reject" icon="sap-icon://delete" onPress="" />
+
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </VBox>
+        <footer>
+            <Toolbar>
+                <ToolbarSpacer/>
+                <Button type="Emphasized" icon="sap-icon://add" text="{i18n>btnAdicionar}" press="onAddPress" />
+            </Toolbar>
+        </footer>
+    </Page>
+</mvc:View>
