@@ -8,25 +8,26 @@ sap.ui.define([
     "sap/ui/model/FilterOperator"
 ], function (BaseController, formatter, Export, ExportTypeCSV, MessageBox, Filter, FilterOperator) {
     "use strict";
-    return BaseController.extend("project.frotasapp.controller.Cargos", {
+    return BaseController.extend("project.frotasapp.controller.Locadoras", {
         formatter: formatter,
 
         onInit: function () {
 
         },
 
-        onCargoFilter: function (oEvent) {
+        onLocadoraFilter: function (oEvent) {
 
             var sQuery = oEvent.getSource().getValue();
             var oFilter = new Filter({
                 filters: [
-                    new Filter("Descricao", FilterOperator.Contains, sQuery)
+                    new Filter("Nome", FilterOperator.Contains, sQuery),
+                    new Filter("CNPJ", FilterOperator.Contains, sQuery)
                 ],
                 and: false
             });
 
             // filter binding
-            var oTable = this.getView().byId("cargoTable");
+            var oTable = this.getView().byId("locadoraTable");
             var oBinding = oTable.getBinding("items");
             oBinding.filter(oFilter);
         },
@@ -41,7 +42,7 @@ sap.ui.define([
                 }),
 
                 // Pass in the model created above
-                models: this.getModel("cargos"),
+                models: this.getModel("locadoras"),
 
                 // binding information for the rows aggregation
                 rows: {
@@ -56,15 +57,20 @@ sap.ui.define([
                         content: "{Id}"
                     }
                 }, {
-                    name: "Descricao",
+                    name: "Nome",
                     template: {
-                        content: "{Descricao}"
+                        content: "{Nome}"
+                    }
+                }, {
+                    name: "CNPJ",
+                    template: {
+                        content: "{CNPJ}"
                     }
                 }]
             });
 
             // download exported file
-            oExport.saveFile("Cargos").catch(function (oError) {
+            oExport.saveFile("Locadoras").catch(function (oError) {
                 MessageBox.error("Error when downloading data. Browser might not be supported!\n\n" + oError);
             }).then(function () {
                 oExport.destroy();

@@ -9,7 +9,7 @@
             <Table id="cargoTable" items="{path:'cargos>/', templateShareable: false}" fixedLayout="false" growing="true">
                 <headerToolbar>
                     <Toolbar design="Transparent">
-                        <SearchField search="onCargoFilter" width="{= ${device>/system/phone} ? '80%' : '30%' }" />
+                        <SearchField search="onCargoFilter" width="{= ${device>/system/phone} ? '80%' : '25%' }" />
                         <ToolbarSpacer></ToolbarSpacer>
                         <Button icon="sap-icon://download" press="onDataExport" />
                     </Toolbar>

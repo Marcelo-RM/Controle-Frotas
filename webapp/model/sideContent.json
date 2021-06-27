@@ -49,13 +49,6 @@
 			"expanded": false,
 			"key": "tipos",
 			"items": []
-		},
-		{
-			"titleI18nKey": "sideContentSuperiores",
-			"icon": "sap-icon://employee",
-			"expanded": true,
-			"key": "superiores",
-			"items": []
 		}
 	],
 	"fixedNavigation": [

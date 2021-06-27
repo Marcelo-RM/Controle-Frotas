@@ -8,14 +8,14 @@ sap.ui.define([
     "sap/ui/model/FilterOperator"
 ], function (BaseController, formatter, Export, ExportTypeCSV, MessageBox, Filter, FilterOperator) {
     "use strict";
-    return BaseController.extend("project.frotasapp.controller.Cargos", {
+    return BaseController.extend("project.frotasapp.controller.Tipos", {
         formatter: formatter,
 
         onInit: function () {
 
         },
 
-        onCargoFilter: function (oEvent) {
+        onTipoFilter: function (oEvent) {
 
             var sQuery = oEvent.getSource().getValue();
             var oFilter = new Filter({
@@ -26,7 +26,7 @@ sap.ui.define([
             });
 
             // filter binding
-            var oTable = this.getView().byId("cargoTable");
+            var oTable = this.getView().byId("tipoTable");
             var oBinding = oTable.getBinding("items");
             oBinding.filter(oFilter);
         },
@@ -41,7 +41,7 @@ sap.ui.define([
                 }),
 
                 // Pass in the model created above
-                models: this.getModel("cargos"),
+                models: this.getModel("tipos"),
 
                 // binding information for the rows aggregation
                 rows: {
@@ -64,7 +64,7 @@ sap.ui.define([
             });
 
             // download exported file
-            oExport.saveFile("Cargos").catch(function (oError) {
+            oExport.saveFile("Tipos").catch(function (oError) {
                 MessageBox.error("Error when downloading data. Browser might not be supported!\n\n" + oError);
             }).then(function () {
                 oExport.destroy();

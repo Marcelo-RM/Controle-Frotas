@@ -1,14 +1,12 @@
 sap.ui.define([
     './BaseController',
-    'sap/ui/model/json/JSONModel',
-    'sap/ui/Device',
     '../model/formatter',
     'sap/ui/core/util/Export',
     'sap/ui/core/util/ExportTypeCSV',
     'sap/m/MessageBox',
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator"
-], function (BaseController, JSONModel, Device, formatter, Export, ExportTypeCSV, MessageBox, Filter, FilterOperator) {
+], function (BaseController, formatter, Export, ExportTypeCSV, MessageBox, Filter, FilterOperator) {
     "use strict";
     return BaseController.extend("project.frotasapp.controller.Carros", {
         formatter: formatter,
@@ -18,13 +16,6 @@ sap.ui.define([
         },
 
         onRouteMatched: function (oEvent) {
-
-            var fnSucess = function (oResponse) {
-                var oModel = new JSONModel(oResponse);
-                this.setModel(oModel, "carros");
-            }.bind(this);
-
-            this.callService("http://localhost:1000/api/Carros", "GET", fnSucess);
         },
 
         onCarsFilter: function (oEvent) {

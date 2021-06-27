@@ -1,0 +1,11 @@
+Carros
+[  ] - Adicionar informação para carros, se está disponível ou está relacionado a um condutor.
+[  ] - Adicionar informação sobre qual locadora pertence o carro.
+
+Condutores
+[  ] - Adicionar informação sobre qual o cargo está relacionado.
+[  ] - Adicionar informação se possui carro ou não.
+[  ] - Adicionar informação sobre qual divisão o condutor está relacionado.
+
+Locadoras
+[  ] - Formatar CNPJ na lista geral.

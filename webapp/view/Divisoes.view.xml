@@ -1,34 +1,25 @@
-<mvc:View controllerName="project.frotasapp.controller.Carros"
+<mvc:View controllerName="project.frotasapp.controller.Divisoes"
     xmlns="sap.m"
     xmlns:l="sap.ui.layout"
     xmlns:core="sap.ui.core"
     xmlns:mvc="sap.ui.core.mvc">
     <Page showHeader="false" showFooter="true">
         <VBox class="sapUiSmallMargin">
-            <Title text="{i18n>titleCarros}" level="H3"/>
-            <Table id="carroTable" items="{path:'carros>/', templateShareable: false}" fixedLayout="false" growing="true">
+            <Title text="{i18n>titleDivisoes}" level="H3"/>
+            <Table id="divisaoTable" items="{path:'divisoes>/', templateShareable: false}" fixedLayout="false" growing="true">
                 <headerToolbar>
                     <Toolbar design="Transparent">
-                        <SearchField search="onCarsFilter" width="{= ${device>/system/phone} ? '80%' : '25%' }" />
+                        <SearchField search="onDivisaoFilter" width="{= ${device>/system/phone} ? '80%' : '25%' }" />
                         <ToolbarSpacer></ToolbarSpacer>
                         <Button icon="sap-icon://download" press="onDataExport" />
                     </Toolbar>
                 </headerToolbar>
                 <columns>
                     <Column>
-                        <Text text="{i18n>columnMarca}"/>
+                        <Text text="{i18n>columnId}"/>
                     </Column>
                     <Column minScreenWidth="Tablet">
-                        <Text text="{i18n>columnModelo}"/>
-                    </Column>
-                    <Column minScreenWidth="Desktop" hAlign="Center">
-                        <Text text="{i18n>columnPlaca}"/>
-                    </Column>
-                    <Column hAlign="Center">
-                        <Text text="{i18n>columnChassi}"/>
-                    </Column>
-                    <Column hAlign="Center">
-                        <Text text="{i18n>columnRenavam}"/>
+                        <Text text="{i18n>columnDescricao}"/>
                     </Column>
                     <Column width="1rem">
                         <Text text=""/>
@@ -40,11 +31,8 @@
                 <items>
                     <ColumnListItem>
                         <cells>
-                            <Text text="{carros>Marca}"/>
-                            <Text text="{carros>Modelo}"/>
-                            <Text text="{carros>Placa}"/>
-                            <Text text="{carros>Chassi}"/>
-                            <Text text="{carros>Renavam}"/>
+                            <Text text="{divisoes>Id}"/>
+                            <Text text="{divisoes>Descricao}"/>
 
                             <Button type="Ghost" icon="sap-icon://edit" onPress="" />
                             <Button type="Reject" icon="sap-icon://delete" onPress="" />

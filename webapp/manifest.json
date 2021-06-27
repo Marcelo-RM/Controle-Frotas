@@ -66,6 +66,34 @@
 			"side": {
 				"type": "sap.ui.model.json.JSONModel",
 				"uri": "model/sideContent.json"
+			},
+			"cargos": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/Cargo.json"
+			},
+			"carros": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/Carro.json"
+			},
+			"condutores": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/Condutor.json"
+			},
+			"divisoes": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/Divisao.json"
+			},
+			"locadoras": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/Locadora.json"
+			},
+			"enderecos": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/Endereco.json"
+			},
+			"tipos": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/Tipo.json"
 			}
 		},
 		"routing": {
@@ -92,11 +120,6 @@
 					"pattern": "cargos",
 					"name": "cargos",
 					"target": "cargos"
-				},
-				{
-					"pattern": "condutores",
-					"name": "condutores",
-					"target": "condutores"
 				},
 				{
 					"pattern": "condutores",
