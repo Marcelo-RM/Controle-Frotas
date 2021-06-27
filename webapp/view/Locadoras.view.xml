@@ -1,0 +1,56 @@
+<mvc:View controllerName="project.frotasapp.controller.Locadoras"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc">
+    <Page showHeader="false" showFooter="true">
+        <VBox class="sapUiSmallMargin">
+            <Title text="{i18n>titleLocadoras}" level="H3"/>
+            <Table id="locadoraTable" items="{path:'locadoras>/', templateShareable: false}" fixedLayout="false" growing="true">
+                <headerToolbar>
+                    <Toolbar design="Transparent">
+                        <SearchField search="onLocadoraFilter" width="{= ${device>/system/phone} ? '80%' : '25%' }" />
+                        <ToolbarSpacer></ToolbarSpacer>
+                        <Button icon="sap-icon://download" press="onDataExport" />
+                    </Toolbar>
+                </headerToolbar>
+                <columns>
+                    <Column>
+                        <Text text="{i18n>columnId}"/>
+                    </Column>
+                    <Column minScreenWidth="Tablet">
+                        <Text text="{i18n>columnNome}"/>
+                    </Column>
+                    <Column minScreenWidth="Tablet">
+                        <Text text="{i18n>columnCNPJ}"/>
+                    </Column>
+                    <Column width="1rem">
+                        <Text text=""/>
+                    </Column>
+                    <Column width="1rem">
+                        <Text text=""/>
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{locadoras>Id}"/>
+                            <Text text="{locadoras>Nome}"/>
+                            <Text text="{locadoras>CNPJ}"/>
+
+                            <Button type="Ghost" icon="sap-icon://edit" onPress="" />
+                            <Button type="Reject" icon="sap-icon://delete" onPress="" />
+
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </VBox>
+        <footer>
+            <Toolbar>
+                <ToolbarSpacer/>
+                <Button type="Emphasized" icon="sap-icon://add" text="{i18n>btnAdicionar}" press="onAddPress" />
+            </Toolbar>
+        </footer>
+    </Page>
+</mvc:View>

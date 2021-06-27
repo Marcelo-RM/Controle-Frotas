@@ -1,0 +1,72 @@
+<mvc:View controllerName="project.frotasapp.controller.Condutores"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc">
+    <Page showHeader="false" showFooter="true">
+        <VBox class="sapUiSmallMargin">
+            <Title text="{i18n>titleCondutores}" level="H3"/>
+            <Table id="condutorTable" items="{path:'condutores>/', templateShareable: false}" fixedLayout="false" growing="true">
+                <headerToolbar>
+                    <Toolbar design="Transparent">
+                        <SearchField search="onCarsFilter" width="{= ${device>/system/phone} ? '80%' : '25%' }" />
+                        <ToolbarSpacer></ToolbarSpacer>
+                        <Button icon="sap-icon://download" press="onDataExport" />
+                    </Toolbar>
+                </headerToolbar>
+                <columns>
+                    <Column>
+                        <Text text="{i18n>columnNome}"/>
+                    </Column>
+                    <Column minScreenWidth="Tablet">
+                        <Text text="{i18n>columnMatricula}"/>
+                    </Column>
+                    <Column minScreenWidth="Desktop" hAlign="Center">
+                        <Text text="{i18n>columnCentroCusto}"/>
+                    </Column>
+                    <Column hAlign="Center">
+                        <Text text="{i18n>columnTicketLog}"/>
+                    </Column>
+                    <Column hAlign="Center">
+                        <Text text="{i18n>columnCPF}"/>
+                    </Column>
+                    <Column minScreenWidth="Tablet">
+                        <Text text="{i18n>columnRG}"/>
+                    </Column>
+                    <Column minScreenWidth="Tablet">
+                        <Text text="{i18n>columnCNH}"/>
+                    </Column>
+                    <Column width="1rem">
+                        <Text text=""/>
+                    </Column>
+                    <Column width="1rem">
+                        <Text text=""/>
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{condutores>Nome}"/>
+                            <Text text="{condutores>Matricula}"/>
+                            <Text text="{condutores>CentroCusto}"/>
+                            <Text text="{condutores>TicketLog}"/>
+                            <Text text="{condutores>CPF}"/>
+                            <Text text="{condutores>RG}"/>
+                            <Text text="{condutores>CNH}"/>
+
+                            <Button type="Ghost" icon="sap-icon://edit" onPress="" />
+                            <Button type="Reject" icon="sap-icon://delete" onPress="" />
+
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </VBox>
+        <footer>
+            <Toolbar>
+                <ToolbarSpacer/>
+                <Button type="Emphasized" icon="sap-icon://add" text="{i18n>btnAdicionar}" press="onAddPress" />
+            </Toolbar>
+        </footer>
+    </Page>
+</mvc:View>

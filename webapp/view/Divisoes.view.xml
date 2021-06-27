@@ -1,0 +1,52 @@
+<mvc:View controllerName="project.frotasapp.controller.Divisoes"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc">
+    <Page showHeader="false" showFooter="true">
+        <VBox class="sapUiSmallMargin">
+            <Title text="{i18n>titleDivisoes}" level="H3"/>
+            <Table id="divisaoTable" items="{path:'divisoes>/', templateShareable: false}" fixedLayout="false" growing="true">
+                <headerToolbar>
+                    <Toolbar design="Transparent">
+                        <SearchField search="onDivisaoFilter" width="{= ${device>/system/phone} ? '80%' : '25%' }" />
+                        <ToolbarSpacer></ToolbarSpacer>
+                        <Button icon="sap-icon://download" press="onDataExport" />
+                    </Toolbar>
+                </headerToolbar>
+                <columns>
+                    <Column>
+                        <Text text="{i18n>columnId}"/>
+                    </Column>
+                    <Column minScreenWidth="Tablet">
+                        <Text text="{i18n>columnDescricao}"/>
+                    </Column>
+                    <Column width="1rem">
+                        <Text text=""/>
+                    </Column>
+                    <Column width="1rem">
+                        <Text text=""/>
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{divisoes>Id}"/>
+                            <Text text="{divisoes>Descricao}"/>
+
+                            <Button type="Ghost" icon="sap-icon://edit" onPress="" />
+                            <Button type="Reject" icon="sap-icon://delete" onPress="" />
+
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </VBox>
+        <footer>
+            <Toolbar>
+                <ToolbarSpacer/>
+                <Button type="Emphasized" icon="sap-icon://add" text="{i18n>btnAdicionar}" press="onAddPress" />
+            </Toolbar>
+        </footer>
+    </Page>
+</mvc:View>

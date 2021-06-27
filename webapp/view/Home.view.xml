@@ -1,0 +1,49 @@
+<mvc:View controllerName="project.frotasapp.controller.Home"
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc">
+	<Page showHeader="false">
+		<VBox class="sapUiSmallMargin">
+			<Table items="{path:'customer>/customers', templateShareable: false}" fixedLayout="false">
+				<headerToolbar>
+					<Toolbar design="Transparent">
+						<Title text="{i18n>customerOverviewTitle}" level="H3"/>
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<Column>
+						<Text text="{i18n>customerName}"/>
+					</Column>
+					<Column minScreenWidth="Tablet">
+						<Text text="{i18n>productId}"/>
+					</Column>
+					<Column minScreenWidth="Desktop" hAlign="End">
+						<Text text="{i18n>lastPurchase}"/>
+					</Column>
+					<Column hAlign="Center">
+						<Text text="{i18n>payment}"/>
+					</Column>
+					<Column hAlign="End">
+						<Text text="{i18n>amount}"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Text text="{customer>name}"/>
+							<Text text="{customer>productId}"/>
+							<Text text="{customer>lastPurchase}"/>
+							<ObjectNumber number="{customer>payment}" state="{customer>state}"/>
+							<ObjectNumber number="{
+												parts:[{path:'customer>amount'},{path:'customer>currencyCode'}],
+												type: 'sap.ui.model.type.Currency',
+												formatOptions: {showMeasure: false}
+											}" unit="{customer>currencyCode}" />
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</VBox>
+	</Page>
+</mvc:View>
