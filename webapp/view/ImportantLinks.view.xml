@@ -1,0 +1,46 @@
+<mvc:View controllerName="project.frotasapp.controller.ImportantLinks"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc">
+    <Page showHeader="false">
+        <f:SimpleForm id="SimpleFormDisplay354"
+            class="sapUiMediumMarginTop"
+			editable="false"
+			layout="ResponsiveGridLayout"
+			labelSpanXL="3"
+			labelSpanL="3"
+			labelSpanM="3"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="4"
+			emptySpanL="4"
+			emptySpanM="4"
+			emptySpanS="0"
+			columnsXL="1"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false" >
+			<f:content>
+				<Label text="Linked-in" />
+				<Link href="https://www.linkedin.com/in/marcelo-rodrigues-76046717b/" text="Marcelo Montalvão" />
+				
+                <Label text="Instagram" />
+				<Link href="https://www.instagram.com/mr_montalvao/" text="@MR_Montalvao" />
+				
+                <Label text="Facebook" />
+				<Link href="https://www.facebook.com/people/Marcelo-Rodrigues/100004629636017" text="Marcelo Rodrigues" />
+				
+                <Label text="Whatsapp" />
+				<Link href="https://wa.me/5561996670684" text="(61) 9 9667-0684" />
+
+                <Label text="GitHub" />
+				<Link href="https://github.com/Marcelo-RM" text="Marcelo-RM" />
+
+                <Label text="Code-Pen" />
+				<Link href="https://codepen.io/marcelo-rm" text="@marcelo-rm" />
+			</f:content>
+		</f:SimpleForm>
+    </Page>
+</mvc:View>
