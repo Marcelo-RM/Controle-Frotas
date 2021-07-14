@@ -1,52 +1,18 @@
 sap.ui.define([
-	'./BaseController',
-	'sap/ui/core/Fragment',
-	'sap/ui/core/mvc/Controller',
-	'sap/ui/model/json/JSONModel',
-	'sap/m/ResponsivePopover',
-	'sap/m/MessagePopover',
-	'sap/m/ActionSheet',
-	'sap/m/Button',
-	'sap/m/Link',
-	'sap/m/Bar',
-	'sap/ui/layout/VerticalLayout',
-	'sap/m/NotificationListItem',
-	'sap/m/MessagePopoverItem',
-	'sap/ui/core/CustomData',
-	'sap/m/MessageToast',
-	'sap/ui/Device',
-	'sap/ui/core/syncStyleClass',
-	'sap/m/library'
-], function (
-	BaseController,
-	Fragment,
-	Controller,
-	JSONModel,
-	ResponsivePopover,
-	MessagePopover,
-	ActionSheet,
-	Button,
-	Link,
-	Bar,
-	VerticalLayout,
-	NotificationListItem,
-	MessagePopoverItem,
-	CustomData,
-	MessageToast,
-	Device,
-	syncStyleClass,
-	mobileLibrary
-) {
+	"./BaseController",
+	"sap/m/MessagePopover",
+	"sap/m/Link",
+	"sap/m/MessagePopoverItem",
+	"sap/m/MessageToast",
+	"sap/ui/Device",
+	"sap/ui/core/syncStyleClass",
+	"sap/m/library"
+], function (BaseController, MessagePopover, Link, MessagePopoverItem,
+	MessageToast, Device, syncStyleClass, mobileLibrary) {
 	"use strict";
-
-	// shortcut for sap.m.PlacementType
-	var PlacementType = mobileLibrary.PlacementType;
 
 	// shortcut for sap.m.VerticalPlacementType
 	var VerticalPlacementType = mobileLibrary.VerticalPlacementType;
-
-	// shortcut for sap.m.ButtonType
-	var ButtonType = mobileLibrary.ButtonType;
 
 	return BaseController.extend("project.frotasapp.controller.App", {
 
@@ -74,7 +40,7 @@ sap.ui.define([
 		},
 
 		onRouteChange: function (oEvent) {
-			this.getModel('side').setProperty('/selectedKey', oEvent.getParameter('name'));
+			this.getModel("side").setProperty("/selectedKey", oEvent.getParameter("name"));
 
 			if (Device.system.phone) {
 				this.onSideNavButtonPress();
@@ -89,7 +55,7 @@ sap.ui.define([
 		},
 
 		_setToggleButtonTooltip: function (bSideExpanded) {
-			var oToggleButton = this.byId('sideNavigationToggleButton');
+			var oToggleButton = this.byId("sideNavigationToggleButton");
 			this.getBundleText(bSideExpanded ? "expandMenuButtonText" : "collpaseMenuButtonText").then(function (sTooltipText) {
 				oToggleButton.setTooltip(sTooltipText);
 			});
@@ -103,7 +69,7 @@ sap.ui.define([
 					var oMessagePopover = new MessagePopover(this.getView().createId("errorMessagePopover"), {
 						placement: VerticalPlacementType.Bottom,
 						items: {
-							path: 'alerts>/alerts/errors',
+							path: "alerts>/alerts/errors",
 							factory: this._createError.bind(this, oBundle)
 						},
 						afterClose: function () {
@@ -116,86 +82,6 @@ sap.ui.define([
 					oMessagePopover.openBy(oMessagePopoverButton);
 				}.bind(this));
 			}
-		},
-
-		/**
-		 * Event handler for the notification button
-		 * @param {sap.ui.base.Event} oEvent the button press event
-		 * @public
-		 */
-		onNotificationPress: function (oEvent) {
-			var oSource = oEvent.getSource();
-			this.getModel("i18n").getResourceBundle().then(function (oBundle) {
-				// close message popover
-				var oMessagePopover = this.byId("errorMessagePopover");
-				if (oMessagePopover && oMessagePopover.isOpen()) {
-					oMessagePopover.destroy();
-				}
-				var oButton = new Button({
-					text: oBundle.getText("notificationButtonText"),
-					press: function (oEvent) {
-						MessageToast.show(oBundle.getText("clickHandlerMessage", [oEvent.getSource().getText()]));
-					}
-				});
-				var oNotificationPopover = new ResponsivePopover(this.getView().createId("notificationMessagePopover"), {
-					title: oBundle.getText("notificationTitle"),
-					contentWidth: "300px",
-					endButton: oButton,
-					placement: PlacementType.Bottom,
-					content: {
-						path: 'alerts>/alerts/notifications',
-						factory: this._createNotification.bind(this)
-					},
-					afterClose: function () {
-						oNotificationPopover.destroy();
-					}
-				});
-				this.byId("app").addDependent(oNotificationPopover);
-				// forward compact/cozy style into dialog
-				syncStyleClass(this.getView().getController().getOwnerComponent().getContentDensityClass(), this.getView(), oNotificationPopover);
-				oNotificationPopover.openBy(oSource);
-			}.bind(this));
-		},
-
-		/**
-		 * Factory function for the notification items
-		 * @param {string} sId The id for the item
-		 * @param {sap.ui.model.Context} oBindingContext The binding context for the item
-		 * @returns {sap.m.NotificationListItem} The new notification list item
-		 * @private
-		 */
-		_createNotification: function (sId, oBindingContext) {
-			var oBindingObject = oBindingContext.getObject();
-			var oNotificationItem = new NotificationListItem({
-				title: oBindingObject.title,
-				description: oBindingObject.description,
-				priority: oBindingObject.priority,
-				close: function (oEvent) {
-					var sBindingPath = oEvent.getSource().getCustomData()[0].getValue();
-					var sIndex = sBindingPath.split("/").pop();
-					var aItems = oEvent.getSource().getModel("alerts").getProperty("/alerts/notifications");
-					aItems.splice(sIndex, 1);
-					oEvent.getSource().getModel("alerts").setProperty("/alerts/notifications", aItems);
-					oEvent.getSource().getModel("alerts").updateBindings("/alerts/notifications");
-					this.getBundleText("notificationMessageDeleted").then(function (sMessageText) {
-						MessageToast.show(sMessageText);
-					});
-				}.bind(this),
-				datetime: oBindingObject.date,
-				authorPicture: oBindingObject.icon,
-				press: function () {
-					this.getModel("i18n").getResourceBundle().then(function (oBundle) {
-						MessageToast.show(oBundle.getText("notificationItemClickedMessage", oBindingObject.title));
-					});
-				},
-				customData: [
-					new CustomData({
-						key: "path",
-						value: oBindingContext.getPath()
-					})
-				]
-			});
-			return oNotificationItem;
 		},
 
 		_createError: function (oBundle, sId, oBindingContext) {

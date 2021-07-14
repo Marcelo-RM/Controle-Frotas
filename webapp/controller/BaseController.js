@@ -68,7 +68,8 @@ sap.ui.define([
 						fnSuccess(r);
 					});
 				})
-				.catch(function (oError) { alert(oError); })
+				// eslint-disable-next-line no-alert
+				.catch(function (oError) { alert(oError); });
 		}
 	});
 
