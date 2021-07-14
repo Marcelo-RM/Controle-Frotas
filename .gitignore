@@ -62,3 +62,4 @@ dist/
 
 # Ignore Visual Studio Code project and settings files
 .vscode/
+.vs
